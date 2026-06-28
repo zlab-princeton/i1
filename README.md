@@ -34,7 +34,7 @@ class="center">
 We **fully open-source** the training code, data, and recipes for reproducing our i1-3B model.
 
  - [x] 3B Model Checkpoint \[[PyTorch](https://huggingface.co/zlab-princeton/i1-3B/blob/main/1024_resolution_checkpoint_torch.pt)\] \[[JAX](https://huggingface.co/zlab-princeton/i1-3B/blob/main/checkpoint.npz-002800000)\]
- - [ ] 1B Model Checkpoint
+ - [x] 1B Model Checkpoint \[[PyTorch](https://huggingface.co/zlab-princeton/i1-1B/blob/main/1024_resolution_checkpoint_torch.pt)\] \[[JAX](https://huggingface.co/zlab-princeton/i1-1B/blob/main/checkpoint.npz-002800000)\]
  - [x] [JAX/TPU Training and Inference Code](jax)
  - [x] [PyTorch/GPU Inference Code](torch_inference)
  - [x] [Dataset](https://huggingface.co/datasets/zlab-princeton/i1-captions) and [Data Pipelines](data_processing)

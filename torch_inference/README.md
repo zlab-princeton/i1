@@ -17,7 +17,7 @@ python -m pip install numpy==1.26.4 pillow tqdm transformers==4.57.1 diffusers==
 By default, we use the complex metaprompt in [metaprompt.txt](metaprompt.txt) and `Qwen/Qwen3-30B-A3B` to rewrite each input text-to-image prompt.
 To reduce GPU memory requirements, you can switch to a smaller prompt rewriter by adding `--rewriter-model Qwen/Qwen3-4B-Instruct-2507`. However, generation quality may degrade.
 
-For faster inference, you can reduce the number of inference steps with `--num-steps`, for example to `50`.
+For faster inference, you can reduce the number of inference steps with `--num-steps`, for example to `50`. You can also try switching from the default 3B model to the smaller 1B model, which was trained with the same recipe, by setting `--model-size 1B`.
 
 ### Option 1: provide input prompts with the `--prompt` flag
 ```bash

@@ -40,6 +40,11 @@ PROMPT_SET_CHOICES = (
     "longtext_complex_rewrite",
 )
 
+MODEL_SIZE_TO_REPO_ID = {
+    "1B": "zlab-princeton/i1-1B",
+    "3B": "zlab-princeton/i1-3B",
+}
+
 def _get_1d_pos_embed(embed_dim: int, pos: np.ndarray) -> np.ndarray:
     omega = np.arange(embed_dim // 2, dtype=np.float64)
     omega /= embed_dim / 2.0
@@ -420,7 +425,7 @@ class FinalLayerNoAdaLN(nn.Module):
         return self.linear(self.norm_final(x))
 
 
-class i1DiT3B(nn.Module):
+class i1DiT(nn.Module):
     def __init__(
         self,
         input_size: int = 1024 // 8,
@@ -434,6 +439,7 @@ class i1DiT3B(nn.Module):
         text_embed_dim: int = 2304,
         text_num_tokens: int = 256,
         rope_theta: float = 10000.0,
+        **_: object,
     ) -> None:
         super().__init__()
         self.input_size = input_size
@@ -809,10 +815,9 @@ def decode_vae(vae, latents: torch.Tensor, batch_size: int):
 
 
 def build_model(device, checkpoint_path: str):
-    model = i1DiT3B().to(device=device, dtype=torch.bfloat16).eval()
     checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
-    state_dict = checkpoint["model"] if isinstance(checkpoint, dict) and "model" in checkpoint else checkpoint
-    model.load_state_dict(state_dict, strict=True)
+    model = i1DiT(**checkpoint["config"]).to(device=device, dtype=torch.bfloat16).eval()
+    model.load_state_dict(checkpoint["model"], strict=True)
     return model
 
 
@@ -847,6 +852,7 @@ if __name__ == "__main__":
     parser.add_argument("--rewriter-model", default="Qwen/Qwen3-30B-A3B", choices=["Qwen/Qwen3-30B-A3B", "Qwen/Qwen3-4B-Instruct-2507"])
     parser.add_argument("--vae-batch-size", type=int, default=4)
     parser.add_argument("--device", default="cuda")
+    parser.add_argument("--model-size", choices=tuple(MODEL_SIZE_TO_REPO_ID), default="3B")
     parser.add_argument("--start-idx", type=int, default=None)
     parser.add_argument("--end-idx", type=int, default=None)
     args = parser.parse_args()
@@ -862,7 +868,7 @@ if __name__ == "__main__":
         if ("geneval" in args.prompt_set) or ("dpg" in args.prompt_set) or ("longtext" in args.prompt_set):
             prompts = [item for item in prompts for _ in range(4)]
     checkpoint_path = hf_hub_download(
-        repo_id="zlab-princeton/i1-3B",
+        repo_id=MODEL_SIZE_TO_REPO_ID[args.model_size],
         filename="1024_resolution_checkpoint_torch.pt",
         repo_type="model",
     )
