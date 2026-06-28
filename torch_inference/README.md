@@ -19,6 +19,8 @@ To reduce GPU memory requirements, you can switch to a smaller prompt rewriter b
 
 For faster inference, you can reduce the number of inference steps with `--num-steps`, for example to `50`. You can also try switching from the default 3B model to the smaller 1B model, which was trained with the same recipe, by setting `--model-size 1B`.
 
+To run inference with an intermediate 256- or 512-resolution checkpoint, add `--resolution 256` or `--resolution 512`, respectively.
+
 ### Option 1: provide input prompts with the `--prompt` flag
 ```bash
 python generate.py \

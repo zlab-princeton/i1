@@ -853,6 +853,7 @@ if __name__ == "__main__":
     parser.add_argument("--vae-batch-size", type=int, default=4)
     parser.add_argument("--device", default="cuda")
     parser.add_argument("--model-size", choices=tuple(MODEL_SIZE_TO_REPO_ID), default="3B")
+    parser.add_argument("--resolution", type=int, choices=(256, 512, 1024), default=1024)
     parser.add_argument("--start-idx", type=int, default=None)
     parser.add_argument("--end-idx", type=int, default=None)
     args = parser.parse_args()
@@ -869,7 +870,7 @@ if __name__ == "__main__":
             prompts = [item for item in prompts for _ in range(4)]
     checkpoint_path = hf_hub_download(
         repo_id=MODEL_SIZE_TO_REPO_ID[args.model_size],
-        filename="1024_resolution_checkpoint_torch.pt",
+        filename=f"{args.resolution}_resolution_checkpoint_torch.pt",
         repo_type="model",
     )
     model = build_model(device, checkpoint_path)
