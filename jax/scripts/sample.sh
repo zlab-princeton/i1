@@ -30,7 +30,7 @@ num_workers=$(gcloud alpha compute tpus tpu-vm describe "$TPU_NAME" \
     --format="json(networkEndpoints)" \
     | python -c 'import json, sys; print(len(json.load(sys.stdin).get("networkEndpoints", [])))')
 
-# loop over CFG scale values and CFG rescale values, generate images, and then copy the zipped images out to local from each worker
+# loop over CFG scale values and CFG rescale values, zip the images, and copy the zipped images out to local from each worker
 for cfg_scale in "${cfg_scales[@]}"; do
     for cfg_rescale in "${cfg_rescales[@]}"; do
         for iter in "${iters[@]}"; do

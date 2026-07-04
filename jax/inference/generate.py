@@ -11,7 +11,10 @@ sys.path.insert(0, PROJECT_ROOT)
 
 import jax
 if not jax.distributed.is_initialized():
-    jax.distributed.initialize()
+    try:
+        jax.distributed.initialize()
+    except Exception as e:
+        pass
 
 from absl import flags, logging
 from absl.flags.argparse_flags import ArgumentParser

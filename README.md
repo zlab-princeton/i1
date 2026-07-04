@@ -36,10 +36,9 @@ We **fully open-source** the training code, data, and recipes for reproducing ou
  - [x] 3B Model Checkpoint (1024-Resolution) \[[PyTorch](https://huggingface.co/zlab-princeton/i1-3B/blob/main/1024_resolution_checkpoint_torch.pt)\] \[[JAX](https://huggingface.co/zlab-princeton/i1-3B/blob/main/checkpoint.npz-002800000)\]
  - [x] 1B Model Checkpoint (1024-Resolution) \[[PyTorch](https://huggingface.co/zlab-princeton/i1-1B/blob/main/1024_resolution_checkpoint_torch.pt)\] \[[JAX](https://huggingface.co/zlab-princeton/i1-1B/blob/main/checkpoint.npz-002800000)\]
  - [x] Intermediate 256- and 512-Resolution Checkpoints \[[3B](https://huggingface.co/zlab-princeton/i1-3B/tree/main)\] \[[1B](https://huggingface.co/zlab-princeton/i1-1B/tree/main)\]
- - [x] [JAX/TPU Training and Inference Code](jax)
+ - [x] [JAX Training and Inference Code for TPUs and GPUs](jax)
  - [x] [PyTorch/GPU Inference Code](torch_inference)
  - [x] [Dataset](https://huggingface.co/datasets/zlab-princeton/i1-captions) and [Data Pipelines](data_processing)
- - [ ] JAX/GPU Training and Inference Code
  - [ ] PyTorch/GPU Training Code
  - [ ] Multi-Aspect-Ratio Checkpoint, Data Pipelines, and Training Code
 

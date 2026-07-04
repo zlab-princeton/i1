@@ -2,7 +2,10 @@ import os
 import jax
 import jax.numpy as jnp
 if not jax.distributed.is_initialized():
-    jax.distributed.initialize()
+    try:
+        jax.distributed.initialize()
+    except Exception as e:
+        pass
 import functools
 import itertools
 
