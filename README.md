@@ -31,15 +31,14 @@ class="center">
 </p>
 
 ## Open-Source Plan
-We **fully open-source** the training code, data, and recipes for reproducing our i1-3B model.
+We **fully open-source** the training code, data, and recipes for **reproducing** our i1-3B model.
 
  - [x] 3B Model Checkpoint (1024-Resolution) \[[PyTorch](https://huggingface.co/zlab-princeton/i1-3B/blob/main/1024_resolution_checkpoint_torch.pt)\] \[[JAX](https://huggingface.co/zlab-princeton/i1-3B/blob/main/checkpoint.npz-002800000)\]
  - [x] 1B Model Checkpoint (1024-Resolution) \[[PyTorch](https://huggingface.co/zlab-princeton/i1-1B/blob/main/1024_resolution_checkpoint_torch.pt)\] \[[JAX](https://huggingface.co/zlab-princeton/i1-1B/blob/main/checkpoint.npz-002800000)\]
  - [x] Intermediate 256- and 512-Resolution Checkpoints \[[3B](https://huggingface.co/zlab-princeton/i1-3B/tree/main)\] \[[1B](https://huggingface.co/zlab-princeton/i1-1B/tree/main)\]
  - [x] [JAX Training and Inference Code for TPUs and GPUs](jax)
- - [x] [PyTorch/GPU Inference Code](torch_inference)
+ - [x] PyTorch [Training](torch_train) and [Inference](torch_inference) Code for GPUs
  - [x] [Dataset](https://huggingface.co/datasets/zlab-princeton/i1-captions) and [Data Pipelines](data_processing)
- - [ ] PyTorch/GPU Training Code
  - [ ] Multi-Aspect-Ratio Checkpoint, Data Pipelines, and Training Code
 
 ## Quick Start
@@ -61,11 +60,12 @@ python generate.py \
 
 ## Code Structure
 
-This codebase contains three independent folders.
+This codebase contains four independent folders.
 
 - [data_processing](data_processing) contains the code for downloading images, recaptioning images, and creating TFRecord files for the image-caption pairs.
 - [jax](jax) contains the training and inference code for our controlled experiments and the final i1-3B model in JAX.
 - [torch_inference](torch_inference) contains the inference code for the final i1-3B model in PyTorch.
+- [torch_train](torch_train) contains the training code for the final i1-3B model in PyTorch.
 
 ## Acknowledgement
 We gratefully thank the Google TPU Research Cloud (TRC) program for providing the primary computing resources for this project. Additional support was provided by the Princeton Research Computing resources at Princeton University, which are managed by a consortium of groups led by the Princeton Institute for Computational Science and Engineering (PICSciE) and Research Computing.

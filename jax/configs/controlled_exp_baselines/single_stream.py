@@ -80,9 +80,9 @@ def get_config():
     config.input.shuffle_buffer_size = 10_000 # this is per worker
     config.input.preprocess = (
         '|decode_png()'
-        '|sample_caption(key="llava_caption")'
+        '|sample_caption(key="caption")'
         '|value_range(-1, 1)'
-        '|copy("llava_caption", "labels")'
+        '|copy("caption", "labels")'
         '|keep("image", "labels")'
     )
 
