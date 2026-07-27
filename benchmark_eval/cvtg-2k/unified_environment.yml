@@ -1,0 +1,14 @@
+name: textcrafter_eval
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10.15
+  - pip=25.2
+  
+  - libstdcxx-ng=15.1.0
+  - libgcc-ng=15.1.0
+  
+  - git=2.49.0
+  - curl=8.14.1
+  - wget=1.21.4

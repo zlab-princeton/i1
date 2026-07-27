@@ -48,6 +48,12 @@ torchrun --nproc_per_node=8 -m training.main --config configs/quick_start.py \
 
 This run takes around 5.4 days.
 
+The evaluation results for the trained checkpoint following this setup are as follows (using the default inference settings in [torch_inference/generate.py](../torch_inference/generate.py) and `*_complex_rewrite` prompts):
+
+|GenEval|DPG-Bench|PRISM|CVTG-2K|LongText-Bench|
+|:-:|:-:|:-:|:-:|:-:|
+|0.81|87.06|62.1|0.3345|0.209|
+
 ## 3. Training with the i1 Recipe
 
 ### 3.1 Prepare the Data

@@ -39,6 +39,7 @@ We **fully open-source** the training code, data, and recipes for **reproducing*
  - [x] [JAX Training and Inference Code for TPUs and GPUs](jax)
  - [x] PyTorch [Training](torch_train) and [Inference](torch_inference) Code for GPUs
  - [x] [Dataset](https://huggingface.co/datasets/zlab-princeton/i1-captions) and [Data Pipelines](data_processing)
+ - [x] [Benchmark Evaluation Pipeline](benchmark_eval)
  - [ ] Multi-Aspect-Ratio Checkpoint, Data Pipelines, and Training Code
 
 ## Quick Start
@@ -60,8 +61,9 @@ python generate.py \
 
 ## Code Structure
 
-This codebase contains four independent folders.
+This codebase contains five independent folders.
 
+- [benchmark_eval](benchmark_eval) contains the instructions and code for running evaluations with the 5 benchmarks we use.
 - [data_processing](data_processing) contains the code for downloading images, recaptioning images, and creating TFRecord files for the image-caption pairs.
 - [jax](jax) contains the training and inference code for our controlled experiments and the final i1-3B model in JAX.
 - [torch_inference](torch_inference) contains the inference code for the final i1-3B model in PyTorch.
